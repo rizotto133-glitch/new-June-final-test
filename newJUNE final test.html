@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Test · Все паки</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --y1: #f5d742;
+            --y2: #f9e45b;
+            --l1: #c4d73a;
+            --l2: #d4e157;
+            --ink: #1e1c10;
+            --ink-mid: #4a4728;
+            --ink-soft: #7a7550;
+            --bg: #fdfcf4;
+            --card: #ffffff;
+            --border: #e8e2b8;
+            --row-odd: #faf7e4;
+            --row-even: #f2f7d8;
+            --radius: 18px;
+            --radius-sm: 10px;
+            --shadow: 0 4px 24px rgba(100, 95, 20, 0.09);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--ink);
+            line-height: 1.5;
+            padding: 0 16px 40px;
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            position: relative;
+            background-color: var(--ink);
+            color: var(--y2);
+            padding: 48px 40px 36px;
+            border-radius: var(--radius);
+            margin: 20px 0 28px;
+            overflow: hidden;
+            isolation: isolate;
+        }
+        .hero__star {
+            position: absolute;
+            right: -20px;
+            top: -60px;
+            font-size: 320px;
+            line-height: 1;
+            color: rgba(249, 228, 91, 0.10);
+            user-select: none;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .hero>* {
+            position: relative;
+            z-index: 1;
+        }
+        .hero__insta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(212, 225, 87, 0.30);
+            border-radius: 999px;
+            padding: 6px 16px 6px 12px;
+            color: var(--l2);
+            font-weight: 500;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: background 0.2s, border-color 0.2s;
+            margin-bottom: 18px;
+        }
+        .hero__insta:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--l2);
+        }
+        .hero__insta svg {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            fill: none;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: clamp(2rem, 7vw, 3.4rem);
+            line-height: 1.1;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+        .hero h1 i {
+            font-style: italic;
+            color: var(--l2);
+            font-weight: 700;
+        }
+        .hero__sub {
+            font-style: italic;
+            color: rgba(249, 228, 91, 0.65);
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            margin-bottom: 8px;
+        }
+        .hero__meta {
+            font-size: 0.95rem;
+            color: rgba(249, 228, 91, 0.5);
+            margin-bottom: 20px;
+        }
+        .hero__meta strong {
+            color: var(--y2);
+            font-weight: 700;
+        }
+        .hero__tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .hero__tags span {
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            border-radius: 999px;
+            padding: 4px 16px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: rgba(249, 228, 91, 0.75);
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+
+        .timer-bar {
+            background: var(--row-even);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 8px 16px;
+            margin: 12px 0 24px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            font-size: 0.9rem;
+        }
+        .timer-bar .time {
+            font-weight: 700;
+            color: var(--ink);
+        }
+        .timer-bar .time span {
+            background: var(--y2);
+            padding: 0 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 1.1rem;
+        }
+
+        .nav {
+            background: var(--y1);
+            border-radius: var(--radius-sm);
+            padding: 8px 16px;
+            margin-bottom: 32px;
+            border-bottom: 2px solid var(--ink);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            display: flex;
+            align-items: center;
+            gap: 4px 16px;
+            flex-wrap: nowrap;
+        }
+        .nav a {
+            color: var(--ink);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 6px 4px;
+            white-space: nowrap;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.15s, color 0.15s;
+        }
+        .nav a:hover {
+            border-bottom-color: var(--ink);
+            color: var(--ink-mid);
+        }
+        .nav .divider {
+            color: var(--ink-mid);
+            opacity: 0.35;
+            font-weight: 300;
+            user-select: none;
+        }
+
+        .section {
+            background: var(--card);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            margin-bottom: 36px;
+            overflow: hidden;
+        }
+        .section__header {
+            background: linear-gradient(135deg, var(--y2), var(--l2));
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .section__header .emoji {
+            font-size: 1.8rem;
+            line-height: 1;
+        }
+        .section__header h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            flex: 1;
+            letter-spacing: -0.01em;
+        }
+        .section__badge {
+            background: var(--ink);
+            color: var(--y2);
+            border-radius: 999px;
+            padding: 2px 16px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+        .section__body {
+            padding: 20px 24px 26px;
+        }
+
+        .question {
+            background: var(--row-odd);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 14px 18px;
+            margin-bottom: 16px;
+        }
+        .question:last-child {
+            margin-bottom: 0;
+        }
+        .question__stem {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+        .question__stem .hi {
+            background: var(--y2);
+            padding: 1px 4px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+        .question__options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 16px;
+        }
+        .question__options label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.92rem;
+            color: var(--ink-mid);
+            cursor: pointer;
+            padding: 2px 0;
+        }
+        .question__options label input[type="radio"] {
+            accent-color: var(--y1);
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+        @media (max-width: 600px) {
+            .question__options {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .q4-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 8px;
+        }
+        .q4-item {
+            background: var(--row-odd);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px 12px;
+            font-size: 0.9rem;
+        }
+        .q4-item .ru {
+            font-weight: 500;
+            color: var(--ink);
+            min-width: 110px;
+        }
+        .q4-item .en {
+            color: var(--ink-soft);
+            font-style: italic;
+            cursor: pointer;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: var(--bg);
+            border: 1px dashed var(--border);
+            transition: background 0.15s;
+            min-width: 80px;
+        }
+        .q4-item .en:hover {
+            background: var(--y2);
+        }
+        .q4-item .en.revealed {
+            background: var(--y2);
+            border-color: var(--y1);
+            font-style: normal;
+            font-weight: 600;
+            color: var(--ink);
+        }
+        .q4-item .checks {
+            display: flex;
+            gap: 12px;
+            margin-left: auto;
+            align-items: center;
+        }
+        .q4-item .checks label {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.8rem;
+            color: var(--ink-mid);
+            cursor: pointer;
+        }
+        .q4-item .checks input[type="radio"] {
+            accent-color: var(--y1);
+            width: 14px;
+            height: 14px;
+        }
+        @media (max-width: 600px) {
+            .q4-grid {
+                grid-template-columns: 1fr;
+            }
+            .q4-item .checks {
+                margin-left: 0;
+                width: 100%;
+                justify-content: flex-start;
+            }
+        }
+
+        .result-box {
+            background: var(--y2);
+            border-radius: var(--radius);
+            padding: 24px 28px;
+            text-align: center;
+            border: 2px solid var(--ink);
+        }
+        .result-box h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        .result-box .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin: 16px 0;
+        }
+        .result-box .stat {
+            background: var(--card);
+            border-radius: var(--radius-sm);
+            padding: 14px 10px;
+            border: 1px solid var(--border);
+        }
+        .result-box .stat .num {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--ink);
+        }
+        .result-box .stat .label {
+            font-size: 0.8rem;
+            color: var(--ink-soft);
+            font-weight: 500;
+        }
+        .result-box .legend {
+            font-size: 0.9rem;
+            color: var(--ink-mid);
+            text-align: left;
+            max-width: 600px;
+            margin: 16px auto 0;
+            border-top: 1px solid var(--border);
+            padding-top: 14px;
+        }
+        .result-box .legend strong {
+            color: var(--ink);
+        }
+        .result-box .time-info {
+            margin-top: 12px;
+            font-size: 0.9rem;
+            color: var(--ink-mid);
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+            background: var(--card);
+            border-radius: var(--radius-sm);
+            padding: 12px;
+            border: 1px solid var(--border);
+        }
+        .result-box .time-info .item {
+            text-align: center;
+        }
+        .result-box .time-info .item .val {
+            font-weight: 700;
+            font-family: monospace;
+            font-size: 1.1rem;
+        }
+        .result-box .time-info .item .lbl {
+            font-size: 0.7rem;
+            color: var(--ink-soft);
+            text-transform: uppercase;
+        }
+        .result-box .errors {
+            margin-top: 16px;
+            text-align: left;
+            background: var(--card);
+            border-radius: var(--radius-sm);
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .result-box .errors .error-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            border-bottom: 1px solid var(--row-odd);
+            font-size: 0.85rem;
+        }
+        .result-box .errors .error-item .wrong {
+            color: #c0392b;
+            font-weight: 600;
+        }
+        .result-box .errors .error-item .correct {
+            color: #27ae60;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: var(--ink);
+            color: var(--y2);
+            border: none;
+            border-radius: 999px;
+            padding: 12px 36px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            font-family: 'Inter', sans-serif;
+            margin: 8px 0 4px;
+        }
+        .btn-primary:hover {
+            background: #2f2b14;
+        }
+        .btn-primary:active {
+            transform: scale(0.97);
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding: 20px 0 8px;
+            border-top: 2px solid var(--border);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .footer__title {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        .footer__title span {
+            background: var(--y2);
+            border-radius: 6px;
+            padding: 0 10px;
+            font-weight: 800;
+        }
+        .footer__insta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--y2);
+            border-radius: 999px;
+            padding: 6px 18px 6px 14px;
+            color: var(--ink);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+        .footer__insta:hover {
+            background: var(--l2);
+        }
+        .footer__insta svg {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            fill: none;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 0 10px 30px;
+            }
+            .hero {
+                padding: 30px 18px 26px;
+                border-radius: 14px;
+            }
+            .hero__star {
+                font-size: 200px;
+                right: -10px;
+                top: -30px;
+            }
+            .hero h1 {
+                font-size: clamp(1.6rem, 8vw, 2.4rem);
+            }
+            .section__body {
+                padding: 14px 14px 20px;
+            }
+            .section__header {
+                padding: 12px 16px;
+            }
+            .section__header h2 {
+                font-size: 1.1rem;
+            }
+            .nav {
+                padding: 6px 12px;
+                gap: 2px 10px;
+                border-radius: 8px;
+            }
+            .nav a {
+                font-size: 0.78rem;
+            }
+            .result-box .stats {
+                grid-template-columns: 1fr;
+            }
+            .result-box .time-info {
+                grid-template-columns: 1fr;
+            }
+            .footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .question__options {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            .nav {
+                position: static !important;
+            }
+            .hero__star {
+                opacity: 0.15;
+            }
+            .section {
+                break-inside: avoid;
+                box-shadow: none;
+            }
+            body {
+                background: white;
+                padding: 0 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HERO ===== -->
+    <header class="hero" id="top">
+        <div class="hero__star" aria-hidden="true">✦</div>
+        <a class="hero__insta" href="https://instagram.com/eng_wall" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" width="20" height="20">
+                <rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="1.8" fill="none"/>
+                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8" fill="none"/>
+                <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
+            </svg>
+            @eng_wall · C1+ лексика здесь
+        </a>
+        <h1>Ultimate Test · <i>Все паки</i></h1>
+        <p class="hero__sub">Два блока: пассивный запас + самооценка активного</p>
+        <p class="hero__meta">Всего тестируется <strong>202 слова</strong> уровня <strong>C1+</strong></p>
+        <div class="hero__tags">
+            <span>📝 Блок 1: 202 вопроса</span>
+            <span>✅ Блок 2: 202 слова</span>
+            <span>⏱ Таймер</span>
+        </div>
+    </header>
+
+    <!-- ===== ТАЙМЕР ===== -->
+    <div class="timer-bar">
+        <div class="time">⏱ Время: <span id="totalTime">00:00</span></div>
+        <div style="font-weight:500; color:var(--ink-soft);">Выполните оба блока</div>
+    </div>
+
+    <!-- ===== НАВИГАЦИЯ ===== -->
+    <nav class="nav">
+        <a href="#block1">Блок 1 · Пассив</a>
+        <span class="divider">|</span>
+        <a href="#block2">Блок 2 · Самооценка</a>
+        <span class="divider">|</span>
+        <a href="#results">Результаты</a>
+    </nav>
+
+    <!-- ===== БЛОК 1 ===== -->
+    <section class="section" id="block1">
+        <div class="section__header">
+            <span class="emoji">📝</span>
+            <h2>Блок 1. Пассивный запас (узнавание)</h2>
+            <span class="section__badge">202 вопроса</span>
+        </div>
+        <div class="section__body" id="block1-container">
+            <!-- будет заполнено JS -->
+        </div>
+        <div style="padding: 0 24px 24px; text-align:center;">
+            <button class="btn-primary" id="finishBtn">Завершить тест</button>
+        </div>
+    </section>
+
+    <!-- ===== БЛОК 2 ===== -->
+    <section class="section" id="block2">
+        <div class="section__header">
+            <span class="emoji">✅</span>
+            <h2>Блок 2. Самооценка активного запаса</h2>
+            <span class="section__badge">202 слова</span>
+        </div>
+        <div class="section__body">
+            <p style="color:var(--ink-soft); margin-bottom:12px;">Нажмите на <span style="background:var(--y2);padding:0 6px;border-radius:4px;">скрытый перевод</span>, чтобы увидеть английский вариант. Отметьте галочкой, знаете ли вы это слово активно (ВЕРНО) или нет (НЕВЕРНО).</p>
+            <div id="block2-grid" class="q4-grid"></div>
+        </div>
+    </section>
+
+    <!-- ===== РЕЗУЛЬТАТЫ ===== -->
+    <section class="section" id="results">
+        <div class="section__header">
+            <span class="emoji">📊</span>
+            <h2>Ваш результат</h2>
+            <span class="section__badge">анализ</span>
+        </div>
+        <div class="section__body">
+            <div id="resultBox" class="result-box" style="display:none;">
+                <!-- будет заполнено JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer__title">
+            speaking gym · <span>Ultimate Test</span> · Все паки
+        </div>
+        <a class="footer__insta" href="https://instagram.com/eng_wall" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" width="20" height="20">
+                <rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="1.8" fill="none"/>
+                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8" fill="none"/>
+                <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
+            </svg>
+            @eng_wall · C1+ лексика здесь
+        </a>
+    </footer>
+
+    <script>
+        // =====================================================================
+        // 1. ВСЕ СЛОВА (202 уникальные единицы)
+        // =====================================================================
+        const ALL_WORDS = [
+            // Money Week (43)
+            { en: "talk yourself into", ru: "уговорить себя (на покупку)" },
+            { en: "talk yourself out of", ru: "отговорить себя (от покупки)" },
+            { en: "indulge in", ru: "побаловать себя, позволить себе" },
+            { en: "stock up on", ru: "запасаться, накупить впрок" },
+            { en: "give in to", ru: "поддаться (соблазну)" },
+            { en: "stick to", ru: "придерживаться (бюджета)" },
+            { en: "fall behind on", ru: "задерживать оплату, накопить долги" },
+            { en: "set aside", ru: "откладывать (деньги)" },
+            { en: "run out of", ru: "исчерпать, закончиться" },
+            { en: "cut out", ru: "полностью исключить" },
+            { en: "run up", ru: "сделать долг, накопить" },
+            { en: "talk over", ru: "обсуждать (проблему)" },
+            { en: "work out", ru: "разработать, составить" },
+            { en: "hide from", ru: "прятаться от проблем" },
+            { en: "save up", ru: "копить (деньги)" },
+            { en: "take out", ru: "взять (ипотеку)" },
+            { en: "pay off", ru: "выплатить (долг)" },
+            { en: "settle down", ru: "осеститься, осесть" },
+            { en: "tie up", ru: "заморозить, связать (капитал)" },
+            { en: "cut back on", ru: "сократить (расходы)" },
+            { en: "splash out on", ru: "потратиться, раскошелиться" },
+            { en: "fork out", ru: "выложить (деньги)" },
+            { en: "the breadwinner", ru: "кормилец, основной добытчик" },
+            { en: "money secrets", ru: "финансовые секреты" },
+            { en: "financial compatibility", ru: "финансовая совместимость" },
+            { en: "down payment", ru: "первоначальный взнос" },
+            { en: "monthly payments", ru: "ежемесячные платежи" },
+            { en: "interest rate", ru: "процентная ставка" },
+            { en: "housing market", ru: "рынок жилья" },
+            { en: "financial freedom", ru: "финансовая свобода" },
+            { en: "peace of mind", ru: "душевное спокойствие" },
+            { en: "to keep your spending in check", ru: "держать расходы под контролем" },
+            { en: "to meet someone halfway", ru: "пойти на компромисс" },
+            { en: "to be on the rocks financially", ru: "быть в финансовом кризисе" },
+            { en: "to throw money away", ru: "выбрасывать деньги на ветер" },
+            { en: "to be tied down", ru: "быть привязанным (к месту)" },
+            { en: "to be over your head", ru: "быть в долгах / не справляться" },
+            { en: "to live beyond your means", ru: "жить не по средствам" },
+            { en: "a money pit", ru: "финансовая яма" },
+            { en: "to be house poor", ru: "быть бедным из-за дорогого жилья" },
+            { en: "to sleep on it", ru: "не торопиться с решением, подумать до утра" },
+            { en: "to have FOMO", ru: "бояться упустить что-то" },
+            { en: "to feel the pinch", ru: "ощущать финансовое давление" },
+            { en: "to keep up with the Joneses", ru: "жить не хуже других, не отставать от соседей" },
+
+            // Luck, Signs, Grammar, Self-help (60)
+            { en: "turn out", ru: "оказаться, в итоге" },
+            { en: "bounce back", ru: "восстанавливаться" },
+            { en: "run into", ru: "случайно встретить" },
+            { en: "fall apart", ru: "развалиться, рухнуть" },
+            { en: "come through", ru: "справиться, выдержать" },
+            { en: "figure out", ru: "понять, разобраться" },
+            { en: "break down", ru: "сломаться" },
+            { en: "point out", ru: "указать, обратить внимание" },
+            { en: "end up", ru: "оказаться (в конечном итоге)" },
+            { en: "go off", ru: "сработать (сигнал)" },
+            { en: "look down on", ru: "смотреть свысока" },
+            { en: "trip up", ru: "ошибиться, сбиться" },
+            { en: "lighten up", ru: "расслабиться" },
+            { en: "buy into", ru: "верить в идею, 'покупаться'" },
+            { en: "talk down to", ru: "разговаривать свысока" },
+            { en: "open up", ru: "раскрыться" },
+            { en: "shut down", ru: "закрыться, перестать слушать" },
+            { en: "a lucky break", ru: "удачный шанс, везение" },
+            { en: "a twist of fate", ru: "поворот судьбы" },
+            { en: "out of the blue", ru: "неожиданно, как гром среди ясного неба" },
+            { en: "a close call", ru: "на грани, едва избежал" },
+            { en: "a turning point", ru: "переломный момент" },
+            { en: "pure chance", ru: "чистая случайность" },
+            { en: "against all odds", ru: "вопреки всему" },
+            { en: "make sense", ru: "быть понятным, иметь смысл" },
+            { en: "out of the way", ru: "в стороне, скрыто" },
+            { en: "hit the wrong button", ru: "нажать не ту кнопку" },
+            { en: "lost in the maze", ru: "заблудиться в лабиринте" },
+            { en: "a no-brainer", ru: "очевидная вещь, проще простого" },
+            { en: "go in circles", ru: "ходить по кругу, топтаться на месте" },
+            { en: "not rocket science", ru: "не ракетостроение, не сложно" },
+            { en: "mixed signals", ru: "противоречивые указания" },
+            { en: "a grammar snob", ru: "грамматический сноб" },
+            { en: "a grammar pet peeve", ru: "раздражающая грамматическая привычка" },
+            { en: "correct someone on the spot", ru: "исправить на месте" },
+            { en: "read the room", ru: "чувствовать обстановку" },
+            { en: "fair enough", ru: "справедливо, ладно, согласен" },
+            { en: "toxic positivity", ru: "токсичный позитив" },
+            { en: "a quick fix", ru: "быстрое решение (часто неэффективное)" },
+            { en: "a band-aid solution", ru: "временное решение" },
+            { en: "it's not that black and white", ru: "не всё так чёрно-бело" },
+            { en: "victim blaming", ru: "обвинение жертвы" },
+            { en: "the root cause", ru: "первопричина" },
+            { en: "the stars aligned", ru: "звёзды сошлись" },
+            { en: "when it rains it pours", ru: "беда не приходит одна" },
+            { en: "hit rock bottom", ru: "дойти до ручки" },
+            { en: "take a leap of faith", ru: "рискнуть, поверить без доказательств" },
+            { en: "dodge a bullet", ru: "избежать беды" },
+            { en: "the universe had other plans", ru: "вселенная распорядилась иначе" },
+            { en: "follow your gut", ru: "следовать интуиции" },
+            { en: "back to square one", ru: "вернуться к началу" },
+            { en: "rules are made to be broken", ru: "правила созданы, чтобы их нарушать" },
+            { en: "it rubs me the wrong way", ru: "меня это раздражает" },
+            { en: "bite your tongue", ru: "прикусить язык, сдержаться" },
+            { en: "let it slide", ru: "пропустить мимо ушей" },
+            { en: "sweat the small stuff", ru: "переживать из-за мелочей" },
+            { en: "make a mountain out of a molehill", ru: "делать из мухи слона" },
+            { en: "pull yourself up by your bootstraps", ru: "вытащить себя за волосы" },
+            { en: "the grass is always greener", ru: "хорошо там, где нас нет" },
+            { en: "a wake-up call", ru: "тревожный звонок" },
+
+            // Train, Don't Strain, Friendships, Emotional Eating (44)
+            { en: "zone out", ru: "отключиться, 'выпасть'" },
+            { en: "wear out", ru: "изнашиваться, истощаться" },
+            { en: "pick up", ru: "освоить, приобрести (навык)" },
+            { en: "keep up", ru: "успевать, поддерживать уровень" },
+            { en: "drift apart", ru: "отдаляться друг от друга" },
+            { en: "grow apart", ru: "стать чужими, разойтись" },
+            { en: "hit it off", ru: "сразу найти общий язык" },
+            { en: "open up", ru: "раскрыться, стать откровенным" },
+            { en: "catch up with", ru: "встретиться и обменяться новостями" },
+            { en: "pig out", ru: "объедаться, наедаться до отвала" },
+            { en: "cut back on", ru: "сократить потребление" },
+            { en: "binge on", ru: "набрасываться на еду" },
+            { en: "break down", ru: "не выдержать, сломаться (психологически)" },
+            { en: "brain plasticity", ru: "пластичность мозга" },
+            { en: "cognitive decline", ru: "ухудшение когнитивных способностей" },
+            { en: "mental sharpness", ru: "острота ума" },
+            { en: "retain information", ru: "удерживать информацию" },
+            { en: "attention span", ru: "концентрация внимания" },
+            { en: "use it or lose it", ru: "используй или потеряешь" },
+            { en: "make friends", ru: "заводить друзей" },
+            { en: "keep in touch", ru: "поддерживать связь" },
+            { en: "fair-weather friend", ru: "друг, который рядом только когда всё хорошо" },
+            { en: "have a lot in common", ru: "иметь много общего" },
+            { en: "be on the same wavelength", ru: "понимать друг друга с полуслова" },
+            { en: "emotional eating", ru: "заедание эмоций" },
+            { en: "comfort food", ru: "еда для утешения" },
+            { en: "stress trigger", ru: "триггер стресса" },
+            { en: "distinguish between", ru: "различать" },
+            { en: "coping mechanism", ru: "механизм совладания со стрессом" },
+            { en: "guilt cycle", ru: "цикл вины" },
+            { en: "go in one ear and out the other", ru: "влетело в одно ухо, вылетело из другого" },
+            { en: "have a senior moment", ru: "забыть что-то из-за возраста (шутливо)" },
+            { en: "be at the top of your game", ru: "быть в лучшей форме (умственно)" },
+            { en: "lose your train of thought", ru: "потерять нить мысли" },
+            { en: "keep your wits about you", ru: "сохранять ясность ума" },
+            { en: "fire on all cylinders", ru: "работать на полную мощность (о мозге)" },
+            { en: "shoulder to cry on", ru: "жилетка, в которую можно поплакаться" },
+            { en: "go way back", ru: "знать друг друга очень долго" },
+            { en: "be there for someone", ru: "быть рядом, поддерживать" },
+            { en: "thick as thieves", ru: "не разлей вода" },
+            { en: "lose touch", ru: "потерять связь" },
+            { en: "pick up where you left off", ru: "продолжить с того места, где остановился" },
+            { en: "spread yourself too thin", ru: "распыляться" },
+            { en: "have your back", ru: "поддерживать, прикрывать" },
+
+            // Charity, Family Size, Plastic Surgery, Ethical Shopping (55)
+            { en: "look after", ru: "заботиться, присматривать" },
+            { en: "give back", ru: "отдавать долг, помогать в ответ" },
+            { en: "chip in", ru: "скинуться, помогать" },
+            { en: "cut back on", ru: "сократить расходы" },
+            { en: "reach out to", ru: "обратиться за помощью" },
+            { en: "bring up", ru: "воспитывать (детей)" },
+            { en: "grow up", ru: "взрослеть, расти" },
+            { en: "miss out on", ru: "упускать возможность" },
+            { en: "hand down", ru: "передавать (вещи, традиции)" },
+            { en: "end up", ru: "в итоге оказаться" },
+            { en: "talk someone into", ru: "уговорить" },
+            { en: "back out", ru: "отказаться в последний момент" },
+            { en: "go through with", ru: "довести до конца" },
+            { en: "turn out", ru: "оказаться (в итоге)" },
+            { en: "get away with", ru: "безнаказанно делать" },
+            { en: "cut corners", ru: "экономить в ущерб этике" },
+            { en: "call out", ru: "публично осуждать" },
+            { en: "look the other way", ru: "закрывать глаза" },
+            { en: "pay off", ru: "окупиться, принести результат" },
+            { en: "limited resources", ru: "ограниченные ресурсы" },
+            { en: "family obligations", ru: "семейные обязанности" },
+            { en: "moral dilemma", ru: "моральная дилемма" },
+            { en: "safety net", ru: "страховочная сетка" },
+            { en: "put someone first", ru: "ставить кого-то на первое место" },
+            { en: "sense of duty", ru: "чувство долга" },
+            { en: "sibling rivalry", ru: "соперничество между братьями/сёстрами" },
+            { en: "undivided attention", ru: "безраздельное внимание" },
+            { en: "financial strain", ru: "финансовая нагрузка" },
+            { en: "emotional support", ru: "эмоциональная поддержка" },
+            { en: "social skills", ru: "социальные навыки" },
+            { en: "family dynamics", ru: "семейная динамика" },
+            { en: "peer pressure", ru: "давление сверстников" },
+            { en: "slippery slope", ru: "скользкая дорожка" },
+            { en: "be on the same page", ru: "быть на одной волне" },
+            { en: "have second thoughts", ru: "сомневаться, передумать" },
+            { en: "raise a red flag", ru: "вызывать тревогу" },
+            { en: "draw a line", ru: "установить границу" },
+            { en: "supply chain", ru: "цепочка поставок" },
+            { en: "working conditions", ru: "условия труда" },
+            { en: "labour exploitation", ru: "эксплуатация труда" },
+            { en: "consumer responsibility", ru: "ответственность потребителя" },
+            { en: "ethical consumption", ru: "этичное потребление" },
+            { en: "price tag", ru: "ценник" },
+            { en: "charity begins at home", ru: "сначала помогай своим" },
+            { en: "go the extra mile", ru: "сделать больше, чем ожидается" },
+            { en: "be torn between", ru: "разрываться между" },
+            { en: "stretch a dollar", ru: "экономить, растягивать деньги" },
+            { en: "have a soft spot for", ru: "иметь слабость к" },
+            { en: "put yourself in someone's shoes", ru: "поставить себя на место" },
+            { en: "do your part", ru: "внести свой вклад" },
+            { en: "have your hands full", ru: "быть занятым по горло" },
+            { en: "pay the price", ru: "поплатиться" },
+            { en: "have blood on your hands", ru: "иметь кровь на руках" },
+            { en: "drop in the ocean", ru: "капля в море" },
+            { en: "see the bigger picture", ru: "видеть картину целиком" },
+            { en: "be caught between a rock and a hard place", ru: "быть между молотом и наковальней" },
+            { en: "make a difference", ru: "изменить ситуацию" }
+        ];
+
+        // =====================================================================
+        // 2. СЛОВАРЬ ПРИМЕРОВ ДЛЯ БЛОКА 1
+        // =====================================================================
+        const exampleSentences = {
+            "talk yourself into": "I ______ buying those shoes - 'I deserve them!'",
+            "talk yourself out of": "I tried to ______ it, but the discount was too good.",
+            "indulge in": "Once a month, I ______ a spa day - it's my treat.",
+            "stock up on": "When there's a sale, I ______ skincare products I don't even need.",
+            "give in to": "I ______ the temptation and bought the handbag - no regrets!",
+            "stick to": "It's easy to make a budget, but much harder to ______ it every month.",
+            "fall behind on": "If you don't follow a budget, you might ______ your rent.",
+            "set aside": "I ______ 20% of my salary for savings every month.",
+            "run out of": "We ______ money before the end of the month.",
+            "cut out": "I had to ______ all eating out to stay within my budget.",
+            "run up": "He ______ a huge credit card debt without telling his wife.",
+            "talk over": "We need to ______ our finances before making any big decisions.",
+            "work out": "They finally ______ a budget that works for both of them.",
+            "hide from": "You can't ______ money issues - they only get worse.",
+            "save up": "We've been ______ for a down payment on a house for years.",
+            "take out": "She decided to ______ a mortgage even though the interest rates were high.",
+            "pay off": "It will take us twenty years to ______ the loan.",
+            "settle down": "After years of renting, they finally ______ and bought a house.",
+            "tie up": "When you buy a property, you ______ a lot of money that you can't use for other things.",
+            "cut back on": "We had to ______ eating out to save money.",
+            "splash out on": "I ______ a new laptop - I'd been saving for months.",
+            "fork out": "I had to ______ £200 for a parking fine - ridiculous!",
+            "the breadwinner": "He's the ______, but she manages all the finances.",
+            "money secrets": "______ can destroy trust in a relationship.",
+            "financial compatibility": "______ is just as important as emotional connection.",
+            "down payment": "The biggest hurdle for most buyers is the ______.",
+            "monthly payments": "Rent and mortgage ______ can be surprisingly similar.",
+            "interest rate": "When ______ go up, your mortgage becomes much more expensive.",
+            "housing market": "The ______ is so unpredictable right now.",
+            "financial freedom": "Renting gives you more ______ to invest money elsewhere.",
+            "peace of mind": "Owning a home gives many people ______ that renting never could.",
+            "to keep your spending in check": "If we want to save for a house, we need to ______.",
+            "to meet someone halfway": "He wanted a sports car, she wanted a family car - they ______.",
+            "to be on the rocks financially": "Their marriage is ______ - they can't agree on anything.",
+            "to throw money away": "Some people say paying rent is just ______ because you never own anything.",
+            "to be tied down": "I don't want a mortgage - I hate feeling ______ to one place.",
+            "to be over your head": "With such a huge loan, many homeowners are ______ financially.",
+            "to live beyond your means": "Taking out a mortgage you can barely afford is ______.",
+            "a money pit": "Old houses can be a real ______ - something always breaks.",
+            "to be house poor": "They have a beautiful house, but they're ______ and can't afford to travel.",
+            "to sleep on it": "Buying a house is a huge decision - never rush, always ______.",
+            "to have FOMO": "I bought that trip because I ______ - everyone else was going.",
+            "to feel the pinch": "After my treat-yourself month, I really ______.",
+            "to keep up with the Joneses": "Treat yourself culture is often about ______ - it's social competition.",
+            "turn out": "It ______ that losing that job was the best thing ever.",
+            "bounce back": "She always ______ after bad luck.",
+            "run into": "I ______ an old friend at the airport.",
+            "fall apart": "My whole plan ______ at the last minute.",
+            "come through": "Even in the worst moments, he ______.",
+            "figure out": "I couldn't ______ how to open the door.",
+            "break down": "The coffee machine ______ again.",
+            "point out": "She always ______ my grammar mistakes.",
+            "end up": "We ______ in the wrong building.",
+            "go off": "The alarm ______ when I hit the wrong button.",
+            "look down on": "Some people ______ non-standard grammar.",
+            "trip up": "Even natives ______ on 'your' vs 'you're'.",
+            "lighten up": "______ — it was just a typo.",
+            "buy into": "I don't ______ manifesting everything.",
+            "talk down to": "Gurus often ______ their audience.",
+            "open up": "Therapy helped me ______.",
+            "shut down": "I ______ when told to 'just think positive'.",
+            "a lucky break": "Getting that call was a ______.",
+            "a twist of fate": "By ______ we ended up on the same flight.",
+            "out of the blue": "The offer came ______.",
+            "a close call": "It was ______ — just seconds away.",
+            "a turning point": "That accident became a ______.",
+            "pure chance": "We met by ______.",
+            "against all odds": "She succeeded ______.",
+            "make sense": "This sign doesn't ______.",
+            "out of the way": "The instructions were hidden ______.",
+            "hit the wrong button": "I ______ and set off the alarm.",
+            "lost in the maze": "I felt completely ______.",
+            "a no-brainer": "Adding a push/pull sign is ______.",
+            "go in circles": "We were ______ for hours.",
+            "not rocket science": "Using a door isn't ______.",
+            "mixed signals": "The arrows give ______.",
+            "a grammar snob": "He's such ______.",
+            "a grammar pet peeve": "My ______ is 'less' instead of 'fewer'.",
+            "correct someone on the spot": "______ can be embarrassing.",
+            "read the room": "______ — nobody wants grammar advice now.",
+            "fair enough": "'Grammar matters in emails.' — '______.'",
+            "toxic positivity": "Telling someone to 'just be happy' is ______.",
+            "a quick fix": "There's no ______ for deep problems.",
+            "a band-aid solution": "Affirmations without action are ______.",
+            "it's not that black and white": "Self-help makes it simple, but ______.",
+            "victim blaming": "'You attracted this bad luck' is ______.",
+            "the root cause": "You need to find ______ of anxiety.",
+            "the stars aligned": "Everything worked out — ______.",
+            "when it rains it pours": "First my car broke down, then I got sick — ______.",
+            "hit rock bottom": "He ______ before turning his life around.",
+            "take a leap of faith": "Sometimes you just have to ______.",
+            "dodge a bullet": "I really ______ by not taking that job.",
+            "the universe had other plans": "I tried to control everything, but ______.",
+            "follow your gut": "When signs fail, just ______.",
+            "back to square one": "We got lost and ended up ______.",
+            "rules are made to be broken": "'Don't end a sentence with a preposition' — ______.",
+            "it rubs me the wrong way": "Bad spelling ______.",
+            "bite your tongue": "I wanted to correct him, but I ______.",
+            "let it slide": "Sometimes it's better to ______ a mistake.",
+            "sweat the small stuff": "Don't ______ — it's just a comma.",
+            "make a mountain out of a molehill": "Correcting every typo is ______.",
+            "pull yourself up by your bootstraps": "That phrase ignores systemic barriers.",
+            "the grass is always greener": "People chase self-help because ______.",
+            "a wake-up call": "Losing that job was a ______.",
+            "zone out": "I often ______ during long meetings – my brain just shuts off.",
+            "wear out": "If you don't rest, your mental energy will ______ completely.",
+            "pick up": "You can ______ new habits even in your 70s – the brain is plastic.",
+            "keep up": "I struggle to ______ with new technology – my brain feels slow.",
+            "drift apart": "After university, we slowly ______ – different cities, different lives.",
+            "grow apart": "We used to be best friends, but we ______ after she had kids.",
+            "hit it off": "I met a guy at the gym and we really ______ – we're grabbing coffee next week.",
+            "open up": "It's hard to ______ to new people when you've been hurt before.",
+            "catch up with": "Let's ______ each other over lunch – I haven't seen you in months.",
+            "pig out": "After a bad day, I just want to ______ on pizza and ice cream.",
+            "cut back on": "You need to ______ junk food slowly, not all at once.",
+            "binge on": "She tends to ______ chocolate when she feels anxious.",
+            "break down": "After weeks of dieting, he finally ______ and ate an entire cake.",
+            "brain plasticity": "______ allows us to learn new things at any age.",
+            "cognitive decline": "Lack of sleep accelerates ______.",
+            "mental sharpness": "Puzzles and reading help maintain ______.",
+            "retain information": "As I get older, I find it harder to ______ from books.",
+            "attention span": "My ______ has shrunk since I started scrolling TikTok.",
+            "use it or lose it": "Learning languages in old age is a classic ______ scenario.",
+            "make friends": "______ after 30 requires more effort than in school.",
+            "keep in touch": "We try to ______ through WhatsApp, but it's not the same.",
+            "fair-weather friend": "She disappeared when I lost my job – turns out she's a ______.",
+            "have a lot in common": "We ______ - both love hiking and true crime podcasts.",
+            "be on the same wavelength": "With my best friend, we're completely ______.",
+            "emotional eating": "______ is not about hunger - it's about soothing feelings.",
+            "comfort food": "For many people, mac and cheese is the ultimate ______.",
+            "stress trigger": "Identifying your ______ is the first step to stopping emotional eating.",
+            "distinguish between": "You need to ______ physical hunger and emotional cravings.",
+            "coping mechanism": "Eating when stressed is a ______, but not a very healthy one.",
+            "guilt cycle": "You eat, feel guilty, then eat more - that's the ______.",
+            "go in one ear and out the other": "Everything the teacher said ______.",
+            "have a senior moment": "I forgot where I put my keys - just ______.",
+            "be at the top of your game": "You don't have to be young to be ______ mentally.",
+            "lose your train of thought": "Sorry, I ______ - what was I saying?",
+            "keep your wits about you": "In a debate, you need to ______.",
+            "fire on all cylinders": "After a good night's sleep, my brain ______.",
+            "shoulder to cry on": "When I got divorced, she was a real ______.",
+            "go way back": "We ______ - we've been friends since kindergarten.",
+            "be there for someone": "You can't expect new friends to ______ right away.",
+            "thick as thieves": "Those two are ______ - they tell each other everything.",
+            "lose touch": "I ______ with most of my uni friends after moving.",
+            "pick up where you left off": "Even after 5 years, we ______.",
+            "spread yourself too thin": "With work, kids, and hobbies, I've ______ to maintain old friendships.",
+            "have your back": "A real friend ______ even when you make stupid decisions.",
+            "look after": "Most people feel they should ______ their parents before donating to strangers.",
+            "give back": "I want to ______ to my community, but my family needs me now.",
+            "chip in": "We all ______ to help our neighbour pay for her medicine.",
+            "cut back on": "To help both family and charity, I had to ______ eating out.",
+            "reach out to": "When my cousin lost his job, he ______ me for financial support.",
+            "bring up": "It is easier to ______ one child financially, but siblings learn to share.",
+            "grow up": "Only children often ______ faster because they spend more time with adults.",
+            "miss out on": "Kids from large families might ______ individual attention from parents.",
+            "hand down": "In big families, clothes and toys are often ______ from older siblings.",
+            "end up": "Teens who get surgery too early may ______ with regrets later.",
+            "talk someone into": "Some parents ______ their kids into surgery because they want the 'perfect' family.",
+            "back out": "A minor might feel trapped and unable to ______ even if they are scared.",
+            "go through with": "Once the appointment is booked, many teens ______ it even if they have doubts.",
+            "turn out": "The surgery may ______ to be a mistake if the child regrets it later.",
+            "get away with": "Big brands often ______ paying workers almost nothing.",
+            "cut corners": "To make clothes cheaper, some companies ______ on safety and wages.",
+            "call out": "More people are ______ fast fashion brands for their bad practices.",
+            "look the other way": "It's easy to ______ when the prices are so low.",
+            "pay off": "Paying a bit more for ethical goods ______ in the long run.",
+            "limited resources": "With ______, you have to choose where your help goes first.",
+            "family obligations": "______ often come before donations to strangers.",
+            "moral dilemma": "Choosing between a relative or a stranger is a real ______.",
+            "safety net": "For many people, family is the only ______ they have.",
+            "put someone first": "In a crisis, most parents ______ their children.",
+            "sense of duty": "A ______ to my parents makes me want to help them before anyone else.",
+            "sibling rivalry": "______ can be intense, but it also teaches conflict resolution.",
+            "undivided attention": "An only child receives ______ from parents.",
+            "financial strain": "Having many children puts a ______ on the family budget.",
+            "emotional support": "Siblings often provide ______ that only children have to find elsewhere.",
+            "social skills": "Growing up with siblings naturally develops ______ like negotiation.",
+            "family dynamics": "______ shift depending on how many children you have.",
+            "peer pressure": "It's often ______, not personal desire, that makes teens want surgery.",
+            "slippery slope": "One small procedure can lead to another – it's a ______.",
+            "be on the same page": "Parents and doctors need to ______ before letting a minor go under the knife.",
+            "have second thoughts": "Many teens ______ right before surgery but feel they cannot speak up.",
+            "raise a red flag": "If a 14-year-old wants a facelift, that should ______ for everyone.",
+            "draw a line": "We need to ______ – no cosmetic surgery for anyone under 18, period.",
+            "supply chain": "Most brands don't know what happens deep in their ______.",
+            "working conditions": "Poor ______ include low wages, long hours, and no safety gear.",
+            "labour exploitation": "______ is common in the garment industry.",
+            "consumer responsibility": "______ means asking where your products come from.",
+            "ethical consumption": "______ is easier for people with higher incomes.",
+            "price tag": "Low ______ often hide a high human cost.",
+            "charity begins at home": "I know ______, but what about people who have no family at all?",
+            "go the extra mile": "When my sister was sick, I ______ to support her financially.",
+            "be torn between": "I'm ______ helping my brother and donating to an animal shelter.",
+            "stretch a dollar": "Families on a tight budget already ______ every dollar.",
+            "have a soft spot for": "I ______ homeless animals, but my mum needs help with rent.",
+            "put yourself in someone's shoes": "______ of a single mother - she puts her child first.",
+            "do your part": "You don't have to donate millions - just ______, even if it's small.",
+            "have your hands full": "Parents of three kids definitely ______.",
+            "pay the price": "Workers ______ for our cheap clothes with their health.",
+            "have blood on your hands": "Some activists say consumers who buy from sweatshops ______.",
+            "drop in the ocean": "My individual choice is just a ______, but it's something.",
+            "see the bigger picture": "We need to ______ – cheap goods keep poor families alive but also exploit them.",
+            "be caught between a rock and a hard place": "Low-income shoppers are ______.",
+            "make a difference": "Voting with your wallet can ______ if enough people do it."
+        };
+
+        function getSentenceForWord(word) {
+            if (exampleSentences[word]) {
+                return exampleSentences[word];
+            } else {
+                return "We need to ______ the situation.";
+            }
+        }
+
+        // =====================================================================
+        // 3. ГЕНЕРАЦИЯ ВОПРОСОВ ДЛЯ БЛОКА 1
+        // =====================================================================
+        function shuffleArray(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        const block1Questions = ALL_WORDS.map((wordObj, index) => {
+            const correct = wordObj.en;
+            const sentence = getSentenceForWord(correct);
+            const allEn = ALL_WORDS.map(w => w.en);
+            const distractors = allEn.filter(w => w !== correct);
+            const shuffledDistractors = shuffleArray([...distractors]);
+            const selectedDistractors = shuffledDistractors.slice(0, 3);
+            let options = [correct, ...selectedDistractors];
+            options = shuffleArray(options);
+            return {
+                id: index,
+                correct: correct,
+                sentence: sentence,
+                options: options,
+                ru: wordObj.ru
+            };
+        });
+
+        // =====================================================================
+        // 4. РЕНДЕРИНГ
+        // =====================================================================
+        function renderBlock1() {
+            const container = document.getElementById('block1-container');
+            let html = '';
+            block1Questions.forEach((q, idx) => {
+                html += `<div class="question">
+                    <div class="question__stem">${idx+1}. ${q.sentence.replace('______', `<span style="background:var(--y2);padding:0 6px;border-radius:4px;">${q.ru}</span>`)}</div>
+                    <div class="question__options">`;
+                q.options.forEach((opt, oi) => {
+                    html += `<label><input type="radio" name="b1_${q.id}" value="${opt}"> ${opt}</label>`;
+                });
+                html += `</div></div>`;
+            });
+            container.innerHTML = html;
+        }
+
+        function renderBlock2() {
+            const grid = document.getElementById('block2-grid');
+            let html = '';
+            ALL_WORDS.forEach((w, idx) => {
+                const id = `b2_${idx}`;
+                html += `<div class="q4-item">
+                    <span class="ru">${w.ru}</span>
+                    <span class="en" id="${id}_en" onclick="revealTranslation('${id}')">[скрытый перевод]</span>
+                    <span style="display:none;" id="${id}_en_revealed">${w.en}</span>
+                    <div class="checks">
+                        <label><input type="radio" name="${id}" value="true"> Верно</label>
+                        <label><input type="radio" name="${id}" value="false"> Неверно</label>
+                    </div>
+                </div>`;
+            });
+            grid.innerHTML = html;
+        }
+
+        window.revealTranslation = function(id) {
+            const el = document.getElementById(id + '_en');
+            const rev = document.getElementById(id + '_en_revealed');
+            if (el && rev) {
+                el.textContent = rev.textContent;
+                el.classList.add('revealed');
+                el.style.cursor = 'default';
+                el.onclick = null;
+            }
+        };
+
+        // =====================================================================
+        // 5. ТАЙМЕР
+        // =====================================================================
+        let startTime = Date.now();
+        let timerInterval;
+
+        function formatTime(ms) {
+            const totalSec = Math.floor(ms / 1000);
+            const min = String(Math.floor(totalSec / 60)).padStart(2, '0');
+            const sec = String(totalSec % 60).padStart(2, '0');
+            return `${min}:${sec}`;
+        }
+
+        function updateTimer() {
+            const now = Date.now();
+            const total = now - startTime;
+            document.getElementById('totalTime').textContent = formatTime(total);
+        }
+
+        timerInterval = setInterval(updateTimer, 1000);
+
+        // =====================================================================
+        // 6. ЗАВЕРШЕНИЕ ТЕСТА
+        // =====================================================================
+        document.getElementById('finishBtn').addEventListener('click', function() {
+            clearInterval(timerInterval);
+            const endTime = Date.now();
+            const totalMs = endTime - startTime;
+            const totalTimeStr = formatTime(totalMs);
+
+            // Подсчёт блока 1
+            let correct1 = 0;
+            const errors1 = [];
+            block1Questions.forEach((q) => {
+                const radios = document.querySelectorAll(`input[name="b1_${q.id}"]`);
+                let selected = null;
+                radios.forEach(r => { if (r.checked) selected = r.value; });
+                if (selected === q.correct) {
+                    correct1++;
+                } else if (selected !== null) {
+                    errors1.push({
+                        ru: q.ru,
+                        correct: q.correct,
+                        wrong: selected
+                    });
+                } else {
+                    // пропуск — считаем как ошибку
+                    errors1.push({
+                        ru: q.ru,
+                        correct: q.correct,
+                        wrong: "(не выбран)"
+                    });
+                }
+            });
+
+            // Подсчёт блока 2
+            let correct2 = 0;
+            ALL_WORDS.forEach((w, idx) => {
+                const id = `b2_${idx}`;
+                const radios = document.querySelectorAll(`input[name="${id}"]`);
+                let selected = null;
+                radios.forEach(r => { if (r.checked) selected = r.value; });
+                if (selected === 'true') correct2++;
+            });
+
+            const total = ALL_WORDS.length;
+            const percent1 = Math.round((correct1 / total) * 100);
+            const percent2 = Math.round((correct2 / total) * 100);
+
+            const box = document.getElementById('resultBox');
+            box.style.display = 'block';
+
+            let errorsHtml = '';
+            if (errors1.length > 0) {
+                errorsHtml = `<div class="errors"><h4 style="margin-bottom:8px;">❌ Ошибки в блоке 1 (${errors1.length})</h4>`;
+                errors1.forEach(e => {
+                    errorsHtml += `<div class="error-item">
+                        <span>${e.ru}</span>
+                        <span><span class="wrong">${e.wrong}</span> → <span class="correct">${e.correct}</span></span>
+                    </div>`;
+                });
+                errorsHtml += `</div>`;
+            } else {
+                errorsHtml = `<p style="color:#27ae60; font-weight:700; margin-top:12px;">🎉 Блок 1 без ошибок!</p>`;
+            }
+
+            box.innerHTML = `
+                <h3>🏆 Результаты</h3>
+                <div class="stats">
+                    <div class="stat">
+                        <div class="num">${correct1} / ${total}</div>
+                        <div class="label">📖 Блок 1 (пассивный)<br><span style="font-size:0.7rem;">${percent1}%</span></div>
+                    </div>
+                    <div class="stat">
+                        <div class="num">${correct2} / ${total}</div>
+                        <div class="label">✅ Блок 2 (самооценка)<br><span style="font-size:0.7rem;">${percent2}%</span></div>
+                    </div>
+                    <div class="stat">
+                        <div class="num">${Math.round((correct1 + correct2) / 2)} / ${total}</div>
+                        <div class="label">⭐ Общий балл<br><span style="font-size:0.7rem;">среднее</span></div>
+                    </div>
+                </div>
+                <div class="legend">
+                    <strong>Пассивный запас</strong> – слова, которые вы узнаёте в контексте (блок 1).<br>
+                    <strong>Активная самооценка</strong> – сколько слов вы считаете, что можете активно использовать (блок 2).<br>
+                    <span style="font-size:0.85rem; color:var(--ink-soft);">Разрыв между блоками показывает, какие слова стоит тренировать для речи.</span>
+                </div>
+                <div class="time-info">
+                    <div class="item"><span class="lbl">Общее время</span><br><span class="val">${totalTimeStr}</span></div>
+                    <div class="item"><span class="lbl">Среднее на вопрос</span><br><span class="val">${formatTime(totalMs / (total * 2))}</span></div>
+                    <div class="item"><span class="lbl">Скорость</span><br><span class="val">${Math.round((total * 2) / (totalMs / 60000))} вопр/мин</span></div>
+                </div>
+                ${errorsHtml}
+            `;
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // =====================================================================
+        // 7. ИНИЦИАЛИЗАЦИЯ
+        // =====================================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            renderBlock1();
+            renderBlock2();
+        });
+    </script>
+</body>
+</html>
